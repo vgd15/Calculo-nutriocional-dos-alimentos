@@ -1,8 +1,5 @@
 import React from 'react';
-import './header.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from '../../pages/Home';
-import Contato from '../../pages/Contato';
+import './Header.css';
 import Links from '../links/links';
 import abelha from '../../abelha.png';
 
@@ -13,13 +10,7 @@ function Header() {
               <img src ={abelha} alt="imagem logo" width='90px'/> 
             </div>
             <div className='headerLinks'>
-                <Router>
-                    <Links />
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/contato' element={<Contato />} />
-                    </Routes>
-                </Router>
+            <Links />
             </div>
         </div>
     );
