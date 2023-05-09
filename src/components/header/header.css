@@ -1,0 +1,21 @@
+
+.headerContainer{
+    display: flex;
+    background-color: #FFD700;
+    flex-direction: row;
+}
+
+.headerLogo{
+    margin: 30px 225px ;
+    display: flex;
+    
+
+}
+
+.headerLinks{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 500px;
+}
+
+
