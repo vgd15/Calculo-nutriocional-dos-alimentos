@@ -5,7 +5,6 @@ import axios from 'axios';
 const Formulario = () => {
     const [foodName, setFoodName] = useState('');
     const [qtdEmGramas, setQtdEmGramas] = useState('');
-    const [medida, setMedida] = useState('');
     const [nutritionData, setNutritionData] = useState(null);
 
     const APP_ID = "e9ff3ebb";
@@ -28,7 +27,7 @@ const Formulario = () => {
         if (foodName && qtdEmGramas) {
             buscarNutritionData();
         }
-    }, [foodName, qtdEmGramas, medida]);
+        });
 
     const handleFoodNameChange = event => {
         setFoodName(event.target.value);
