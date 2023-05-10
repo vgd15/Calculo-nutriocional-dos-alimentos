@@ -7,16 +7,15 @@ const Formulario = () => {
     const [qtdEmGramas, setQtdEmGramas] = useState('');
     const [nutritionData, setNutritionData] = useState(null);
 
-    const APP_ID = "e9ff3ebb";
-    const APP_KEY = "be71dd98c93f567853bca68c4cb94dc5";
+    const APP_ID = "653f3ff9";
+    const APP_KEY = "af58244f25e8226ae26d56f5afe2dc58";
 
     const buscarNutritionData = () => {
-        axios
-            .get(
-                `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=${qtdEmGramas}g%20${foodName}`
+        axios.get(`https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=${qtdEmGramas}g%20${foodName}`
             )
             .then(response => {
                 setNutritionData(response.data);
+                console.log(response.data)
             })
             .catch(error => {
                 console.error(error);
@@ -62,7 +61,7 @@ const Formulario = () => {
                 />
 
 
-                <button type="submit">Obter valor nutricional</button>
+                <button type="submit">Obter valores nutricionais</button>
             </form>
 
             {nutritionData && (
