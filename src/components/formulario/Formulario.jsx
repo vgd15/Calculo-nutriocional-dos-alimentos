@@ -70,9 +70,9 @@ const Formulario = () => {
                 <div className="informacaoNutricao">
                     <h2>Informações nutricionais</h2>
                     <p> Calorias: {nutritionData.calories / 3}</p>
-                    <p>Proteínas: {nutritionData.totalNutrients.PROCNT.quantity}</p>
-                    <p>Gorduras: {nutritionData.totalNutrients.FAT.quantity}</p>
-                    <p>Carboidratos: {nutritionData.totalNutrients.CHOCDF.quantity}</p>
+                    <p>Proteínas: {nutritionData.totalNutrients.PROCNT.quantity / 3 }</p>
+                    <p>Gorduras: {nutritionData.totalNutrients.FAT.quantity /3 }</p>
+                    <p>Carboidratos: {nutritionData.totalNutrients.CHOCDF.quantity / 3}</p>
                 </div>
             )}
         </div>
