@@ -1,80 +1,154 @@
 import './Formulario.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Formulario = () => {
-    const [foodName, setFoodName] = useState('');
-    const [qtdEmGramas, setQtdEmGramas] = useState('');
-    const [nutritionData, setNutritionData] = useState(null);
+    const [inputs, setInputs] = useState([{ foodName: '', qtdEmGramas: '' }]);
+    const [nutritionData, setNutritionData] = useState([]);
 
-    const APP_ID = "653f3ff9";
-    const APP_KEY = "af58244f25e8226ae26d56f5afe2dc58";
+    const APP_ID = "1f7961f6";
+    const APP_KEY = "c70a36b1a0cdb925ccd7c569368dab0c	";
+
+    const handleInputChange = (index, event) => {
+        const { name, value } = event.target;
+        const newInputs = [...inputs];
+        newInputs[index][name] = value;
+        setInputs(newInputs);
+    };
 
     const buscarNutritionData = () => {
-        axios.get(`https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=${qtdEmGramas}g%20${foodName}`
-            )
-            .then(response => {
-                setNutritionData(response.data);
-                console.log(response.data)
+        const promises = inputs.map(({ foodName, qtdEmGramas }) => {
+            return axios.get(
+                `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=${encodeURIComponent(
+                    qtdEmGramas + 'g ' + foodName
+                )}`
+            );
+        });
+
+        Promise.all(promises)
+            .then((responses) => {
+                const nutritionData = responses.map((response) => response.data);
+                setNutritionData(nutritionData);
+                console.log(nutritionData);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error(error);
             });
     };
 
-    useEffect(() => {
-        if (foodName && qtdEmGramas) {
-            buscarNutritionData();
-        }
-        });
-
-    const handleFoodNameChange = event => {
-        setFoodName(event.target.value);
+    const handleAddInput = () => {
+        setInputs([...inputs, { foodName: '', qtdEmGramas: '' }]);
     };
 
-    const handleQtdEmGramasChange = event => {
-        setQtdEmGramas(event.target.value);
-    };
-
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (foodName && qtdEmGramas) {
-            buscarNutritionData();
+        buscarNutritionData();
+    };
+
+    const calcularSomaCalorias = () => {
+        let somaCalorias = 0;
+        for (const data of nutritionData) {
+            somaCalorias += data.calories;
         }
+        return Math.round(somaCalorias / 2.5);
+    };
+
+    const calcularSomaProteinas = () => {
+        let somaProteinas = 0;
+        for (const data of nutritionData) {
+            somaProteinas += data.totalNutrients.PROCNT.quantity;
+        }
+        return Math.round(somaProteinas);
+    };
+
+    const calcularSomaGordura = () => {
+        let somaGordura = 0;
+        for (const data of nutritionData) {
+            somaGordura += data.totalNutrients.FAT.quantity;
+        }
+        return Math.round(somaGordura / 3);
+    };
+
+    const calcularSomaCarb = () => {
+        let somaCarb = 0;
+        for (const data of nutritionData) {
+            somaCarb += data.totalNutrients.CHOCDF.quantity;
+        }
+        return Math.round(somaCarb / 3);
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={foodName}
-                    onChange={handleFoodNameChange}
-                    placeholder="Escreva o nome do alimento"
-                />
-
-                <input
-                    type="float"
-                    value={qtdEmGramas}
-                    onChange={handleQtdEmGramasChange}
-                    placeholder="Digite a quantidade em gramas"
-                />
-
-
-                <button type="submit">Obter valores nutricionais</button>
+                {inputs.map((input, index) => (
+                    <div key={index}>
+                        <input
+                            type="text"
+                            name="foodName"
+                            value={input.foodName}
+                            onChange={(event) => handleInputChange(index, event)}
+                            placeholder="Escreva o nome do alimento"
+                        />
+                        <input
+                            type="float"
+                            name="qtdEmGramas"
+                            value={input.qtdEmGramas}
+                            onChange={(event) => handleInputChange(index, event)}
+                            placeholder="Digite a quantidade em gramas"
+                        />
+                        <br />
+                    </div>
+                ))}
+                <button type="button" onClick={handleAddInput}>
+                    Adicionar Alimento
+                </button>
+                <button type="submit" disabled={inputs.length === 0}>
+                    Obter valores nutricionais
+                </button>
             </form>
-
-            {nutritionData && (
-                <div className="informacaoNutricao">
-                    <h2>Informações nutricionais</h2>
-                    <p> Calorias: {nutritionData.calories / 3}</p>
-                    <p>Proteínas: {nutritionData.totalNutrients.PROCNT.quantity / 3 }</p>
-                    <p>Gorduras: {nutritionData.totalNutrients.FAT.quantity /3 }</p>
-                    <p>Carboidratos: {nutritionData.totalNutrients.CHOCDF.quantity / 3}</p>
-                </div>
-            )}
+            <div className="informacaoNutricao">
+                <h2>Informações nutricionais</h2>
+                {nutritionData && (
+                    <div>
+                        <p>Total de Calorias: {calcularSomaCalorias()*2}</p>
+                        <p>Total de Proteinas: {calcularSomaProteinas()}</p>
+                        <p>Total de Gorduras: {calcularSomaGordura()}</p>
+                        <p>Total de Carboidratos: {calcularSomaCarb()}</p>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
 export default Formulario;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
