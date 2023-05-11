@@ -1,9 +1,12 @@
 import React from "react";
+import FormContato from '../../components/Contate/Contate';
 
 function Contato(props){
     return(
         <div>
-           <h5>{props.texto1}</h5>
+          <p> Alguma dúvida ou sugestāo?</p>
+          <h2>Entre em contato</h2>
+           <FormContato/>
         </div>
 
     );   
