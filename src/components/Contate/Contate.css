@@ -1,18 +1,25 @@
 .login-form{
     display: flex;
-    place-content: flex-start
+    place-content: flex-start;
+    justify-content: center;
+    margin: 10px 10px 10px 10px ;
 }
 
 input{
-    border-radius: 10px;margin: 0;
+    border-radius: 5px; 
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "arial", "barlow";
-
+    display:flex;
+    margin: 10px 10px 10px 10px ;
+    height: 30px;
 }
  p, h2{
     font-family: "arial", "barlow";
     color: beige;
+    padding: auto;
+    text-align: center;
     
 
  }
