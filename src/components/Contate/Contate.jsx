@@ -12,7 +12,7 @@ const FormContato = () => {
 
     const handleEnviarMensagem = () => {
         setMensagemEnviada(true);
-        alert('Sua mensagem foi enviada!');
+        alert('Your message was sent!');
     };
 
 
@@ -22,7 +22,7 @@ return (
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
 
 
-            <label htmlFor="inputEmail">Nome</label>
+            <label htmlFor="inputEmail">Name</label>
             <input
                 type="nome"
                 id="inputNome"
@@ -34,16 +34,16 @@ return (
                 id="inputEmail"
                 name="email"
                 {...register("email", {
-                    required: "Digite um email válido",
+                    required: "Enter a valid email",
                     pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: "Digite um email válido",
+                        message: "Enter a valid email",
                     },
                 })}
             />
             {errors.email && <p className="error">{errors.email.message}</p>}
 
-            <label htmlFor="Mensagem">Mensagem</label>
+            <label htmlFor="Mensagem">Message</label>
             <input
                 type="mensagem"
                 id="Mensagem"
@@ -54,7 +54,7 @@ return (
             />
             {errors.password && <p className="error">{errors.password.message}</p>}
 
-            <button onClick={handleEnviarMensagem}>Enviar</button>
+            <button onClick={handleEnviarMensagem}>Send</button>
 
 
 

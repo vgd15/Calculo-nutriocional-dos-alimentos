@@ -88,7 +88,7 @@ const Formulario = () => {
               name="foodName"
               value={input.foodName}
               onChange={(event) => handleInputChange(index, event)}
-              placeholder="Escreva o nome do alimento"
+              placeholder="Write the name of the food here"
             />
             <input
               className="Input"
@@ -96,26 +96,26 @@ const Formulario = () => {
               name="qtdEmGramas"
               value={input.qtdEmGramas}
               onChange={(event) => handleInputChange(index, event)}
-              placeholder="Digite a quantidade em gramas"
+              placeholder="Serving size in grams"
             />
             <br />
           </div>
         ))}
         <button type="button" onClick={handleAddInput}>
-          Adicionar Alimento
+        Add more one option
         </button>
         <button type="submit" disabled={inputs.length === 0}>
-          Obter valores nutricionais
+        Get Nutritional Values
         </button>
       </form>
       <div className="informacaoNutricao">
-        <h2>Informações nutricionais</h2>
+        <h2>Nutrition facts</h2>
         {nutritionData && (
           <div>
-            <p>Total de Calorias: {calcularSomaCalorias() * 2}</p>
-            <p>Total de Proteinas: {calcularSomaProteinas()}</p>
-            <p>Total de Gorduras: {calcularSomaGordura()}</p>
-            <p>Total de Carboidratos: {calcularSomaCarb()}</p>
+            <p>Calories: {calcularSomaCalorias() * 2}</p>
+            <p>Total Proteins: {calcularSomaProteinas()}</p>
+            <p>Total Fat: {calcularSomaGordura()}</p>
+            <p>Total Carbohidrates: {calcularSomaCarb()}</p>
           </div>
         )}
       </div>
