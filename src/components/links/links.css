@@ -4,6 +4,8 @@ ul, li a {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  color: black;
+  color: #583a3a;
   font-size: 30px;
+  font-weight: bold;
+
 }
