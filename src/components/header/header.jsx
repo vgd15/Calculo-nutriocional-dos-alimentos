@@ -1,13 +1,13 @@
 import React from 'react';
 import './header.css';
 import Links from '../links/links';
-import abelha from '../../abelha.png';
+import logoPreview from './logo-preview.png';
 
 function Header() {
     return (
         <div className='headerContainer'>
             <div className='headerLogo'>
-              <img src ={abelha} alt="imagem logo" width='90px'/> 
+              <img src ={logoPreview} alt="imagem logo" width='300px'/> 
             </div>
             <div className='headerLinks'>
             <Links />

@@ -12,7 +12,7 @@ function Links() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/contato">Contato</Link>
+                        <Link to="/contato">Contact us</Link>
                     </li>
                 </ul>
             </nav>
