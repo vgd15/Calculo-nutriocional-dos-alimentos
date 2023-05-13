@@ -6,8 +6,8 @@ const Formulario = () => {
   const [inputs, setInputs] = useState([{ foodName: "", qtdEmGramas: "" }]);
   const [nutritionData, setNutritionData] = useState([]);
 
-  const APP_ID = "1f7961f6";
-  const APP_KEY = "c70a36b1a0cdb925ccd7c569368dab0c	";
+  const APP_ID = "3dd04ec0";
+  const APP_KEY = "67c774ae45097e6080a07521d50f6395	";
 
   const handleInputChange = (index, event) => {
     const { name, value } = event.target;
