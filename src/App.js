@@ -12,7 +12,7 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Home titulo="Calculadora de calorias" />} />
+          <Route path="/" element={<Home titulo="Calorie Calculator" />} />
           <Route path="/contato" element={<Contato />} />
         </Routes>
       </Router>

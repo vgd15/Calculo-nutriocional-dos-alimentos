@@ -1,11 +1,3 @@
-
-  /*h5 {
-    font-size: 10px;
-  } */
-  form{
-    
-  }
-
   .Container-input {
     margin-top: 30px;
   }
@@ -64,6 +56,7 @@ h2{
 p{
     margin-top: 30px;
     margin-bottom: 30px;
+    font-size: 20px;
 
 }
 
@@ -85,12 +78,25 @@ p{
 }
 
 button {
-  background-color: #639667;
+  background: linear-gradient(90deg, #EAAEF3 0%,  #639667 100%);
   width: 150px;
   padding: 10px  10px 10px 10px;
   border-radius: 40px;
   align-items: center; 
-  color: white;
+  color: #000;
   margin: 20px;
   font: caption;
+  cursor: pointer;
+}
+
+button:hover{
+    background-color: #639667;
+    border: 2px solid white;
+    transition: 1s;
+}
+
+
+
+.informacaoNutricao{
+ 
 }

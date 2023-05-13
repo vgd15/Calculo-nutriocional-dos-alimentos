@@ -13,7 +13,7 @@
   display: flex;
   margin-top: 40px;
   margin-left: 500px;
-}
+  }
 
 * {
     margin: 0;
@@ -42,4 +42,8 @@
   margin-top: 20px;
   margin-right: 50px;
   color:#639667 ;
+}
+
+img{
+  
 }

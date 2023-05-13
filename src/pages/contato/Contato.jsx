@@ -3,9 +3,9 @@ import FormContato from '../../components/Contate/Contate';
 
 function Contato(props){
     return(
-        <div>
-          <p> Alguma dúvida ou sugestāo?</p>
-          <h2>Entre em contato</h2>
+        <div classname="contato-text" >
+          <p>Any questions ? </p>
+          <h2>Contact us!</h2>
            <FormContato/>
         </div>
 
