@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './header.css';
 import Links from '../links/links';
 import abelha from '../../abelha.png';
 
