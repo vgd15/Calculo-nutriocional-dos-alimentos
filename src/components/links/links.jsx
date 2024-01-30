@@ -14,6 +14,12 @@ function Links() {
                     <li>
                         <Link to="/contato">Contact us</Link>
                     </li>
+                    <li>
+                        <Link to="/contato">Work With Us</Link>
+                    </li>
+                    <li>
+                        <Link to="/contato">About Us</Link>
+                    </li>
                 </ul>
             </nav>
 
