@@ -7,5 +7,8 @@ ul, li a {
   color: #583a3a;
   font-size: 30px;
   font-weight: bold;
+  cursor: pointer;
+  
+ 
 
 }
